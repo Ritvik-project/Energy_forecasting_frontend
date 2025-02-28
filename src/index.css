@@ -1,0 +1,31 @@
+body{
+  background-color: white;
+
+}
+.Dash_U{
+  background-color: lightblue;
+  color: white;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+}
+.left_side{
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  gap: 10px;
+  column-gap: 10px;
+}
+.right_side{
+  display: flex;
+  flex-direction: column;
+  align-content: flex-end;
+  column-gap: 10px;
+  gap: 10px;
+}
+h3{
+  font-size: 18px;
+  font-weight: bold;
+}
