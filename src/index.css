@@ -3,7 +3,16 @@ body{
   background-color: white;
 
 }
+.parent{
+  padding-top: 20px;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  height: 800px;
+  
+}
 .Dash_U{
+  
   background-color: lightblue;
   color: white;
   width: 800px;
@@ -27,8 +36,14 @@ body{
   align-content: flex-end;
   column-gap: 10px;
   gap: 10px;
+  font-size: 16px;
 }
-h3{
-  font-size: 18px;
+h1{
+  font-size: 40px;
   font-weight: bold;
+}
+.same_l{
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
