@@ -1,3 +1,4 @@
+@import "tailwindcss";
 body{
   background-color: white;
 
@@ -5,11 +6,13 @@ body{
 .Dash_U{
   background-color: lightblue;
   color: white;
+  width: 800px;
   height: 200px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 20px;
+  border-radius: 20px ;
 }
 .left_side{
   display: flex;
