@@ -4,16 +4,15 @@ body{
 
 }
 .parent{
-  padding-top: 20px;
   display: flex;
   justify-content: center;
   flex-direction: row;
-  height: 800px;
-  
+  height: 255px;
+  padding-top: 20px;
+  /* background-color: blue; */
 }
 .Dash_U{
-  
-  background-color: lightblue;
+  background-color: grey;
   color: white;
   width: 800px;
   height: 200px;
@@ -46,4 +45,42 @@ h1{
   display: flex;
   align-items: center;
   gap: 15px;
+}
+
+.second_dash{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  height: 340px;
+  /* background-color: yellow; */
+  align-content: center;
+  gap: 110px;
+}
+.first_2{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+}
+.second_2{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.third_2{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: flex-start;
+}
+.ten_days{
+  background-color: red;
+  color: white;
+  border-radius: 15px;
+  padding-left: 7px;
+  padding-right: 7px;
+  margin-top: 20px;
+}
+.ten_days:hover{
+  background-color: blue;
 }
