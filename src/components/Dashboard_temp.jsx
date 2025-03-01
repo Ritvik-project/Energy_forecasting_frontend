@@ -12,38 +12,26 @@ const Dashboard_temp = () => {
         time:[],
         wind:[]
     })
-    // useEffect(()=>{
-    //     if(datax && datax.hourly){
-    //         const limitedData = {
-    //             solar: datax.hourly.direct_radiation.slice(0,12).map((sl)=>sl/100),
-    //             time: datax.hourly.time.slice(0,12).map(time=>time.split('T')[1]),
-    //             wind: datax.hourly.wind_speed_10m.slice(0,12)
-    //         };
-    //         setdatas(prev=>({
-    //             ...prev,
-    //             ...limitedData
-    //         }))
-    //     }
-    // },[])
+
     useEffect(() => {
         const fetchData = async () => {
           try {
-            const response = await fetch(`http://192.168.167.225:5001/predict?latitude=20.12&longitude=12.50`); 
+            const response = await fetch(`http://192.168.167.225:5001/predict?latitude=20.59&longitude=78.9627`); 
             const data = await response.json();
             
 
             console.log(data);
             if (data && data.hourly) {
-              const limitedData = {
-                solar: data.hourly.direct_radiation.slice(0, 12).map((sl) => sl / 100),
-                time: data.hourly.time.slice(0, 12).map((time) => time.split('T')[1]),
-                wind: data.hourly.wind_speed_10m.slice(0, 12), 
-              };
+                const times = data.hourly.formatted_time;
+                const solarEnergy = data.hourly.solar_energy;
+                const windEnergy = data.hourly.wind_energy;
             
     
-              setDatas((prev) => ({
+              setdatas((prev) => ({
                 ...prev,
-                ...limitedData,
+                time: times,
+                solar: solarEnergy,
+                wind: windEnergy
               }));
             }
           } catch (error) {
@@ -53,9 +41,20 @@ const Dashboard_temp = () => {
     
         fetchData(); 
       }, []);
-    console.log(datas.time);
-    console.log(datas.solar);
-    const hours = datas.time.map(time => time.split(':')[0]);
+
+
+    const hours = datas.time.slice(0, 12).map((timestamp) => {
+        const date = new Date(timestamp);
+        const time = date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }); 
+        const time2 = time.substring(0,2);
+        return time2; 
+      });
+
+    const solarP = datas.solar.slice(0,12).map((val)=>val/1000);
+    const windP = datas.wind.slice(0,12).map((val)=> val/1000);
+    console.log(hours)
+    console.log(solarP)
+    console.log(windP)
     return(
         <>
         <div className='second_dash'>
@@ -74,11 +73,11 @@ const Dashboard_temp = () => {
                     yAxis={[{label: 'Power Generation (in kW)'}]}
                     series={[
                     {
-                        data: datas.solar,
+                        data: solarP,
                         label: 'solar panel'
                     },
                     {
-                        data: datas.wind,
+                        data: windP,
                         label: 'windmill'
                     }
                     ]}
@@ -101,3 +100,17 @@ const Dashboard_temp = () => {
 }
 
 export default Dashboard_temp
+
+// solar: data.hourly.direct_radiation.slice(0, 12).map((sl) => sl / 100),
+//                 // time: datetime.datetime.utcfromtimestamp(data.hourly.time.slice(0, 12)).map((time) => time.split('T')[1]),
+//                 // wind: data.hourly.wind_speed_10m.slice(0, 12), 
+
+    // const hours = datas.time.map(time => {
+    //     return time.substring(11, 16);
+    // });
+
+    // const hours = datas.time.slice(0,12).map((timestamp)=>{
+    //     const date = new Date(timestamp);
+    //     const time = date.toLocaleTimeString(); 
+    //     return time; 
+    // });

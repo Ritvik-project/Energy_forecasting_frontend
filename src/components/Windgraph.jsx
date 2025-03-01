@@ -1,6 +1,5 @@
 import React from 'react'
 import { LineChart } from '@mui/x-charts/LineChart'
-import datax from './datax.json'
 import { useState, useEffect } from 'react'
 
 const Windgraph = () => {
@@ -10,45 +9,46 @@ const Windgraph = () => {
         time:[],
     })
     
-    // useEffect(() => {
-    //         const fetchData = async () => {
-    //           try {
-    //             const response = await fetch('192.168.167.149/predict'); 
-    //             const data = await response.json();
+    useEffect(() => {
+            const fetchData = async () => {
+              try {
+                const response = await fetch(`http://192.168.167.225:5001/predict?latitude=20.59&longitude=78.9627`); 
+                const data = await response.json();
+                
+    
+                console.log(data);
+                if (data && data.hourly) {
+                    const times = data.hourly.formatted_time;
+                    const windEnergy = data.hourly.wind_energy;
+                
         
-    //             if (data && data.hourly) {
-    //               const limitedData = {
-    //                 time: data.hourly.time.slice(0, 24).map((time) => time.split('T')[1]),
-    //                 wind: data.hourly.wind_speed_10m.slice(0, 24), 
-    //               };
-        
-    //               setdataw((prev) => ({
-    //                 ...prev,
-    //                 ...limitedData,
-    //               }));
-    //             }
-    //           } catch (error) {
-    //             console.error('Error fetching data:', error);
-    //           }
-    //         };
-        
-    //         fetchData(); 
-    //       }, []);
-    useEffect(()=>{
-        if(datax && datax.hourly){
-            const limitedData = {
-                windspeed: datax.hourly.wind_speed_10m.slice(0,24),
-                time: datax.hourly.time.slice(0,24).map(time=>time.split('T')[1])
+                  setdataw((prev) => ({
+                    ...prev,
+                    time: times,
+                    windpower: windEnergy
+                  }));
+                }
+              } catch (error) {
+                console.error('Error fetching data:', error);
+              }
             };
-            setdataw(prev=>({
-                ...prev,
-                ...limitedData
-            }))
-        }
-    },[])
-    console.log(dataw.time);
-    console.log(dataw.windspeed);
-    const hours = dataw.time.map(time => time.split(':')[0]);
+        
+            fetchData(); 
+          }, []);
+    
+        const hours = dataw.time.slice(0, 24).map((timestamp) => {
+            const date = new Date(timestamp);
+            let hours = date.getHours(); 
+            let minutes = date.getMinutes(); 
+
+            hours = hours < 10 ? '0' + hours : hours;
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+    
+            return `${hours}`;
+        });
+        const windP = dataw.windpower.slice(0,24).map((val)=> val/1000);
+        console.log(hours)
+        console.log(windP)
   return (
     <>
     <div><h1 className='Gh'>Wind power generation</h1></div>
@@ -60,8 +60,8 @@ const Windgraph = () => {
             }]}
             yAxis={[{label: 'Speed'}]}
             series={[{
-                data: dataw.windspeed,
-                label: 'wind power'
+                data: windP,
+                label: 'wind power (in kW)'
             }]}
             width={800}
             height={300}
