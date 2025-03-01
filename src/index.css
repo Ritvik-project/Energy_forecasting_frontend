@@ -37,8 +37,12 @@ body{
   gap: 10px;
   font-size: 16px;
 }
-h1{
+.h1A{
   font-size: 40px;
+  font-weight: bold;
+}
+.h1B{
+  font-size: 30px;
   font-weight: bold;
 }
 .same_l{
@@ -83,4 +87,26 @@ h1{
 }
 .ten_days:hover{
   background-color: blue;
+}
+.widgets{
+  background-color: aqua;
+  border-radius: 20px;
+  padding: 10px;
+  margin-right: 10px ;
+  max-width: 220px;
+  display: flex;
+  align-items:flex-start;
+  flex-direction: column;
+}
+.lower_d{
+  max-width: 1800px;
+  max-height: 110px;
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  margin-left: 120px;
+  margin-right: 120px;
+}
+.lower_d::-webkit-scrollbar{
+  display: none;
 }

@@ -2,6 +2,8 @@ import React from 'react'
 import { LineChart } from '@mui/x-charts/LineChart';
 import { useState, useEffect } from 'react';
 import { bottomNavigationActionClasses } from '@mui/material';
+import { Link } from 'react-router-dom';
+
 
 const Dashboard_temp = () => {
     return(
@@ -32,11 +34,8 @@ const Dashboard_temp = () => {
                     width={500}
                     height={300}
                 />
+                
             </div>
-            <div style={{display:'flex',justifyContent:'center'}}>
-                <button className='ten_days'>10 days data</button>
-            </div>
-            
         </div>
         <div className='third_2'>
             <div style={{alignItems:'center',justifyContent:'center'}}><h3>Wind mill</h3></div>
@@ -45,7 +44,6 @@ const Dashboard_temp = () => {
             <div>non generating hours:</div>
             
         </div>
-            
         </div>
     </>
     );

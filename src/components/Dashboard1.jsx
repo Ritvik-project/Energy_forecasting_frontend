@@ -4,6 +4,8 @@ import { CiLocationOn } from "react-icons/ci";
 import { FaWind } from "react-icons/fa";
 import { IoIosSunny } from "react-icons/io";
 import { WiDegrees } from "react-icons/wi";
+import Dashboard_temp from './Dashboard_temp';
+import Dashboard3 from './Dashboard3';
 
 const Dashboard1 = () => {
   const [data, setData] = useState({
@@ -14,7 +16,8 @@ const Dashboard1 = () => {
       date: new Date().toLocaleDateString(),
       location: 'New Delhi',
       longitude: '',
-      latitude: ''
+      latitude: '',
+      time: ''
   });
 
   const handleInputChange = (e) => {
@@ -45,20 +48,20 @@ const Dashboard1 = () => {
               
                   <div className='Dash_U bg-gray-700'>
                       <div className='left_side'>
-                      <div style={{position:'relative', paddingBottom:'20px'}}>
-                        <div style={{position:'absolute'}}>
+                      <div style={{display:'flex', flexDirection:'row', position:'relative', paddingBottom:'20px'}}>
+                        <div >
                            longitude: <input className="outline-hidden border-none" value={data.longitude} name='longitude' onChange={handleInputChange} type='text'></input> 
                         </div>
-                        <div style={{position:'relative', left:'70%'}}>
-                        latitude: <input value={data.latitude} name='latitude' onChange={handleInputChange} type='text' />
+                        <div>
+                        latitude: <input className="outline-hidden border-none" value={data.latitude} name='latitude' onChange={handleInputChange} type='text' />
                         </div>
                         
                         
                       </div>
 
-                          <div>
-                              <h1 style={{position:'absolute',left:'26%'}}><WiDegrees /></h1>
-                              <h1>{data.temperature}</h1>
+                          <div style={{display:'flex',flexDirection:'row'}}>
+                              {/* <h1 style={{position:'absolute',left:'26%'}}><WiDegrees /></h1> */}
+                              <h1 className='h1A'>{data.temperature} </h1> <h1 className='h1B'>{'\u00B0'}C</h1>
                               
                           </div>
                           <div className='same_l'>
@@ -83,6 +86,13 @@ const Dashboard1 = () => {
                       </div>
                   </div>
               </div>
+              <div>
+                <Dashboard_temp />
+              </div>
+              <div>
+                <Dashboard3 />
+              </div>
+              
           </div>
       </>
   );
