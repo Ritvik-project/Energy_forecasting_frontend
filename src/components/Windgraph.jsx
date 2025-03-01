@@ -10,7 +10,30 @@ const Windgraph = () => {
         time:[],
     })
     
-
+    // useEffect(() => {
+    //         const fetchData = async () => {
+    //           try {
+    //             const response = await fetch('192.168.167.149/predict'); 
+    //             const data = await response.json();
+        
+    //             if (data && data.hourly) {
+    //               const limitedData = {
+    //                 time: data.hourly.time.slice(0, 24).map((time) => time.split('T')[1]),
+    //                 wind: data.hourly.wind_speed_10m.slice(0, 24), 
+    //               };
+        
+    //               setdataw((prev) => ({
+    //                 ...prev,
+    //                 ...limitedData,
+    //               }));
+    //             }
+    //           } catch (error) {
+    //             console.error('Error fetching data:', error);
+    //           }
+    //         };
+        
+    //         fetchData(); 
+    //       }, []);
     useEffect(()=>{
         if(datax && datax.hourly){
             const limitedData = {

@@ -9,15 +9,14 @@ import Dashboard3 from './Dashboard3';
 
 const Dashboard1 = () => {
   const [data, setData] = useState({
-      temperature: 0,
-      sunlight: 0,
-      windspeed: 0,
+      temperature: 24,
+      sunlight: 3.87,
+      windspeed: 7.9,
       time: new Date().toLocaleTimeString(),
       date: new Date().toLocaleDateString(),
       location: 'New Delhi',
-      longitude: '',
-      latitude: '',
-      time: ''
+      longitude: 28.6139,
+      latitude: 77.2088,
   });
 
   const handleInputChange = (e) => {
