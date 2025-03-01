@@ -8,11 +8,16 @@ const Windgraph = () => {
         windpower:[],
         time:[],
     })
+    const [index, setIndex] = useState(0);
+    const handleButtonClick = (buttonIndex) => {
+        setIndex(buttonIndex*24);
+        console.log(index)
+    };
     
     useEffect(() => {
             const fetchData = async () => {
               try {
-                const response = await fetch(`http://192.168.167.225:5001/predict?latitude=20.59&longitude=78.9627`); 
+                const response = await fetch(`http://192.168.167.225:5001/predict?latitude=28.4446151&longitude=83.13314027`); 
                 const data = await response.json();
                 
     
@@ -36,7 +41,7 @@ const Windgraph = () => {
             fetchData(); 
           }, []);
     
-        const hours = dataw.time.slice(0, 24).map((timestamp) => {
+        const hours = dataw.time.slice(index, index+24).map((timestamp) => {
             const date = new Date(timestamp);
             let hours = date.getHours(); 
             let minutes = date.getMinutes(); 
@@ -46,26 +51,41 @@ const Windgraph = () => {
     
             return `${hours}`;
         });
-        const windP = dataw.windpower.slice(0,24).map((val)=> val/1000);
+        const windP = dataw.windpower.slice(index,index+24).map((val)=> val/1000);
         console.log(hours)
         console.log(windP)
   return (
     <>
     <div><h1 className='Gh'>Wind power generation</h1></div>
-        <div>
+        <div style={{display:'flex',flexDirection:'row'}}>
             <LineChart
             xAxis={[{   
                 data: hours,
                 label: 'Time (in hours)'
             }]}
-            yAxis={[{label: 'Speed'}]}
+            yAxis={[{label: 'Power'}]}
             series={[{
                 data: windP,
                 label: 'wind power (in kW)'
             }]}
             width={800}
-            height={300}
+            height={250}
             />
+            <div style={{marginTop:'80px', backgroundColor:'black', maxHeight:'45px', color:'white',padding:'10px', borderRadius:'20px'}}>
+                Selected Day {index/24+1}
+            </div>
+        </div>
+        <div>
+            <div style={{ display: 'flex', gap: '10px' }}>
+                {Array.from({ length: 14 }, (_, i) => (
+                    <button
+                        key={i}
+                        onClick={() => handleButtonClick(i)}
+                        style={{padding: '10px', fontSize: '16px', backgroundColor: 'black', color: 'white', borderRadius: '10px', }}                        >
+                        Day {i + 1}
+                    </button>
+                ))}
+            </div>
         </div>
 
     </>

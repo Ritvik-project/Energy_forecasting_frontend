@@ -7,6 +7,10 @@ const solargraph = () => {
         solar:[],
         time:[],
     })
+    const [index, setIndex] = useState(0);
+        const handleButtonClick = (buttonIndex) => {
+        setIndex(buttonIndex*24);
+    };
     
     useEffect(() => {
         const fetchData = async () => {
@@ -33,7 +37,7 @@ const solargraph = () => {
                 fetchData(); 
               }, []);
         
-            const hours = datas.time.slice(0, 24).map((timestamp) => {
+            const hours = datas.time.slice(index, index+24).map((timestamp) => {
                 const date = new Date(timestamp);
                 let hours = date.getHours(); 
                 let minutes = date.getMinutes(); 
@@ -43,13 +47,13 @@ const solargraph = () => {
         
                 return `${hours}`;
             });
-            const solarP = datas.solar.slice(0,24).map((val)=> val/1000);
+            const solarP = datas.solar.slice(index,index+24).map((val)=> val/1000);
             console.log(hours)
             console.log(solarP)
   return (
     <>
     <div style={{marginTop:'30px'}}><h1 className='Gh'>Solar power generation</h1></div>
-        <div>
+        <div style={{display:'flex', flexDirection:'row'}}>
             <LineChart
             xAxis={[{   
                 data: hours,
@@ -61,9 +65,31 @@ const solargraph = () => {
                 label: 'solar energy'
             }]}
             width={800}
-            height={300}
+            height={250}
             />
+            <div style={{marginTop:'80px', backgroundColor:'black', maxHeight:'45px', color:'white',padding:'10px', borderRadius:'20px'}}>
+                Selected Day {index/24+1}
+            </div>
         </div>
+        <div>
+                <div style={{ display: 'flex', gap: '10px' }}>
+                    {Array.from({ length: 14 }, (_, i) => (
+                        <button
+                            key={i}
+                            onClick={() => handleButtonClick(i)}
+                            style={{
+                                padding: '10px',
+                                fontSize: '16px',
+                                backgroundColor: 'black',
+                                color: 'white',
+                                borderRadius: '10px',
+                            }}
+                        >
+                            Day {i + 1}
+                        </button>
+                    ))}
+                </div>
+            </div>
 
     </>
   )
