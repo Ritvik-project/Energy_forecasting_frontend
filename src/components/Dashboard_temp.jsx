@@ -71,8 +71,8 @@ const Dashboard_temp = () => {
         <div className='second_dash'>
         <div className='first_2'>
             <div><h3>Solar Panel</h3></div>
-            <div>today's max: {maxs}</div>
-            <div>todays's low: {mins}</div>
+            <div>current max: {maxs}</div>
+            <div>current low: {mins}</div>
         </div>
         <div className='second_2'>
         <Link to={'./ten_days'}>
@@ -99,8 +99,8 @@ const Dashboard_temp = () => {
         </div>
         <div className='third_2'>
             <div style={{alignItems:'center',justifyContent:'center'}}><h3>Wind mill</h3></div>
-            <div>today's max: {maxw}</div>
-            <div>todays's low: {minw}</div>
+            <div>current max: {maxw}</div>
+            <div>current low: {minw}</div>
             
         </div>
         </div>
