@@ -10,12 +10,11 @@ import Ten_days from './components/pages/Ten_days'
 const App = () => {
   return (
     <>
-      <div>
-        <Dashboard1 />
-      </div>
+     
       <Router>
-        <Routes>
-          <Route path='/ten_days' element={<Ten_days />} />
+        <Routes path="/">
+          <Route path='ten_days' element={<Ten_days />} />
+          <Route path="" element={<Dashboard1/>}/>
         </Routes>
       </Router>
     </>  

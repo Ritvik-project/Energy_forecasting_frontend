@@ -16,6 +16,7 @@ const Dashboard_temp = () => {
             <div>non generating hours:</div>
         </div>
         <div className='second_2'>
+        <Link to={'./ten_days'}>
             <div>
                 <LineChart
                     xAxis={[{ data: [1, 2, 3, 5, 8, 10],
@@ -35,7 +36,7 @@ const Dashboard_temp = () => {
                     height={300}
                 />
                 
-            </div>
+            </div></Link>
         </div>
         <div className='third_2'>
             <div style={{alignItems:'center',justifyContent:'center'}}><h3>Wind mill</h3></div>

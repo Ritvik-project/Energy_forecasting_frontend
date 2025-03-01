@@ -110,3 +110,6 @@ body{
 .lower_d::-webkit-scrollbar{
   display: none;
 }
+.Gh{
+  font-size: 25px;
+}
