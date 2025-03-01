@@ -1,9 +1,8 @@
 @import "tailwindcss";
-body{
+body {
   background-color: white;
-
 }
-.parent{
+.parent {
   display: flex;
   justify-content: center;
   flex-direction: row;
@@ -11,8 +10,8 @@ body{
   padding-top: 20px;
   /* background-color: blue; */
 }
-.Dash_U{
-  background-color: grey;
+.Dash_U {
+  background-color: #222831;
   color: white;
   width: 800px;
   height: 200px;
@@ -20,16 +19,16 @@ body{
   align-items: center;
   justify-content: space-between;
   padding: 20px;
-  border-radius: 20px ;
+  border-radius: 20px;
 }
-.left_side{
+.left_side {
   display: flex;
   flex-direction: column;
   align-content: flex-start;
   gap: 10px;
   column-gap: 10px;
 }
-.right_side{
+.right_side {
   display: flex;
   flex-direction: column;
   align-content: flex-end;
@@ -37,47 +36,45 @@ body{
   gap: 10px;
   font-size: 16px;
 }
-.h1A{
+.h1A {
   font-size: 40px;
   font-weight: bold;
 }
-.h1B{
+.h1B {
   font-size: 30px;
   font-weight: bold;
 }
-.same_l{
+.same_l {
   display: flex;
   align-items: center;
   gap: 15px;
 }
 
-.second_dash{
+.second_dash {
   display: flex;
   justify-content: center;
   flex-direction: row;
   height: 340px;
   /* background-color: yellow; */
   align-content: center;
-  gap: 110px;
 }
-.first_2{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-}
-.second_2{
+.first_2 {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-.third_2{
+.second_2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.third_2 {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-content: flex-start;
 }
-.ten_days{
+.ten_days {
   background-color: red;
   color: white;
   border-radius: 15px;
@@ -85,20 +82,21 @@ body{
   padding-right: 7px;
   margin-top: 20px;
 }
-.ten_days:hover{
+.ten_days:hover {
   background-color: blue;
 }
-.widgets{
-  background-color: aqua;
+.widgets {
+  background-color: #222831;
+  color: white;
   border-radius: 20px;
   padding: 10px;
-  margin-right: 10px ;
+  margin-right: 10px;
   max-width: 220px;
   display: flex;
-  align-items:flex-start;
+  align-items: flex-start;
   flex-direction: column;
 }
-.lower_d{
+.lower_d {
   max-width: 1800px;
   max-height: 110px;
   display: flex;
@@ -106,10 +104,11 @@ body{
   overflow-x: auto;
   margin-left: 120px;
   margin-right: 120px;
+  background-color: #eee9da;
 }
-.lower_d::-webkit-scrollbar{
+.lower_d::-webkit-scrollbar {
   display: none;
 }
-.Gh{
+.Gh {
   font-size: 25px;
 }
