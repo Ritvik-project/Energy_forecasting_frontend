@@ -57,14 +57,22 @@ const Dashboard_temp = () => {
     console.log(hours)
     console.log(solarP)
     console.log(windP)
+    const maxs = parseFloat(Math.max(...solarP));
+    const mins = parseFloat(Math.min(...solarP));
+    const maxw = parseFloat(Math.max(...windP));
+    const minw = parseFloat(Math.min(...windP));
+
+    console.log("###################################################");
+
+    console.log(maxs);
+    console.log(typeof maxs);
     return(
         <>
         <div className='second_dash'>
         <div className='first_2'>
             <div><h3>Solar Panel</h3></div>
-            <div>today's max: 6.97</div>
-            <div>todays's low: 0</div>
-            <div>non generating hours: 0:00 to 6:00</div>
+            <div>today's max: {maxs}</div>
+            <div>todays's low: {mins}</div>
         </div>
         <div className='second_2'>
         <Link to={'./ten_days'}>
@@ -91,9 +99,8 @@ const Dashboard_temp = () => {
         </div>
         <div className='third_2'>
             <div style={{alignItems:'center',justifyContent:'center'}}><h3>Wind mill</h3></div>
-            <div>today's max: 11.3</div>
-            <div>todays's low: 1.9</div>
-            <div>non generating hours: None</div>
+            <div>today's max: {maxw}</div>
+            <div>todays's low: {minw}</div>
             
         </div>
         </div>

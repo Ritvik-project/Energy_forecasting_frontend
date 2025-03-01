@@ -8,16 +8,43 @@ import Dashboard_temp from './Dashboard_temp';
 import Dashboard3 from './Dashboard3';
 
 const Dashboard1 = () => {
-  const [data, setData] = useState({
-      temperature: 24,
-      sunlight: 3.87,
-      windspeed: 7.9,
+  const [data2, setData] = useState({
+      temperature: [],
+      sunlight: [],
+      windspeed: [],
       time: new Date().toLocaleTimeString(),
       date: new Date().toLocaleDateString(),
-      location: 'New Delhi',
       longitude: 28.6139,
       latitude: 77.2088,
   });
+  useEffect(() => {
+      const fetchData = async () => {
+                try {
+                  const response = await fetch(`http://192.168.167.225:5001/predict?latitude=28.4446151&longitude=83.13314027`); 
+                  const data = await response.json();
+                  
+      
+                  console.log(data);
+                  if (data && data.hourly) {
+                      const windSpeed = data.hourly.wind_speed.map(value => parseFloat(value).toFixed(2));
+                      const solarEnergy = data.hourly.shortwave_radiation.map(value => parseFloat(value).toFixed(2));
+                      
+                      const temp = data.hourly.temperature;
+              
+                      setData((prev) => ({
+                          ...prev,
+                          windspeed: windSpeed,
+                          temperature: temp,
+                          sunlight: solarEnergy
+                      }));
+                  }
+                } catch (error) {
+                  console.error('Error fetching data:', error);
+                }
+              };
+          
+              fetchData(); 
+            }, []);
 
   const handleInputChange = (e) => {
       const { name, value } = e.target;
@@ -49,10 +76,10 @@ const Dashboard1 = () => {
                       <div className='left_side'>
                       <div style={{display:'flex', flexDirection:'row', position:'relative', paddingBottom:'20px'}}>
                         <div >
-                           longitude: <input className="outline-hidden border-none" value={data.longitude} name='longitude' onChange={handleInputChange} type='text'></input> 
+                           longitude: <input className="outline-hidden border-none" value={data2.longitude} name='longitude' onChange={handleInputChange} type='text'></input> 
                         </div>
                         <div>
-                        latitude: <input className="outline-hidden border-none" value={data.latitude} name='latitude' onChange={handleInputChange} type='text' />
+                        latitude: <input className="outline-hidden border-none" value={data2.latitude} name='latitude' onChange={handleInputChange} type='text' />
                         </div>
                         
                         
@@ -60,27 +87,23 @@ const Dashboard1 = () => {
 
                           <div style={{display:'flex',flexDirection:'row'}}>
                               {/* <h1 style={{position:'absolute',left:'26%'}}><WiDegrees /></h1> */}
-                              <h1 className='h1A'>{data.temperature} </h1> <h1 className='h1B'>{'\u00B0'}C</h1>
+                              <h1 className='h1A'>{data2.temperature[0]} </h1> <h1 className='h1B'>{'\u00B0'}C</h1>
                               
                           </div>
                           <div className='same_l'>
                               <div><FaCalendarAlt /></div>
-                              <div>{data.date}</div>
-                              <div>{data.time}</div>
-                          </div>
-                          <div className='same_l'>
-                              <div><CiLocationOn /></div>
-                              <div>{data.location}</div>
+                              <div>{data2.date}</div>
+                              <div>{data2.time}</div>
                           </div>
                       </div>
                       <div className='right_side'>
                           <div className='same_l'>
                               <div><FaWind /></div>
-                              <div>{data.windspeed}</div>
+                              <div>{data2.windspeed[0]}</div>
                           </div>
                           <div className='same_l'>
                               <div><IoIosSunny /></div>
-                              <div>{data.sunlight}</div>
+                              <div>{data2.sunlight[0]}</div>
                           </div>
                       </div>
                   </div>
