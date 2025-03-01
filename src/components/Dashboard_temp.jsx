@@ -1,9 +1,7 @@
 import React from 'react'
 import { LineChart } from '@mui/x-charts/LineChart';
 import { useState, useEffect } from 'react';
-import { bottomNavigationActionClasses } from '@mui/material';
 import { Link } from 'react-router-dom';
-import datax from './datax.json'
 
 
 const Dashboard_temp = () => {
@@ -44,11 +42,15 @@ const Dashboard_temp = () => {
 
 
     const hours = datas.time.slice(0, 12).map((timestamp) => {
-        const date = new Date(timestamp);
-        const time = date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }); 
-        const time2 = time.substring(0,2);
-        return time2; 
-      });
+                const date = new Date(timestamp);
+                let hours = date.getHours(); 
+                let minutes = date.getMinutes(); 
+    
+                hours = hours < 10 ? '0' + hours : hours;
+                minutes = minutes < 10 ? '0' + minutes : minutes;
+        
+                return `${hours}`;
+            });
 
     const solarP = datas.solar.slice(0,12).map((val)=>val/1000);
     const windP = datas.wind.slice(0,12).map((val)=> val/1000);
@@ -96,21 +98,8 @@ const Dashboard_temp = () => {
         </div>
         </div>
     </>
-    );
+    )
+    
 }
 
 export default Dashboard_temp
-
-// solar: data.hourly.direct_radiation.slice(0, 12).map((sl) => sl / 100),
-//                 // time: datetime.datetime.utcfromtimestamp(data.hourly.time.slice(0, 12)).map((time) => time.split('T')[1]),
-//                 // wind: data.hourly.wind_speed_10m.slice(0, 12), 
-
-    // const hours = datas.time.map(time => {
-    //     return time.substring(11, 16);
-    // });
-
-    // const hours = datas.time.slice(0,12).map((timestamp)=>{
-    //     const date = new Date(timestamp);
-    //     const time = date.toLocaleTimeString(); 
-    //     return time; 
-    // });
