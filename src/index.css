@@ -85,9 +85,15 @@ body {
 .ten_days:hover {
   background-color: blue;
 }
+
 .widgets {
   background-color: #222831;
   color: white;
+}
+
+.widgets {
+  background-color: lightcyan;
+
   border-radius: 20px;
   padding: 10px;
   margin-right: 10px;
@@ -111,4 +117,21 @@ body {
 }
 .Gh {
   font-size: 25px;
+}
+
+.parent_c {
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  margin-top: 30px;
+  margin-left: 140px;
+  margin-right: 140px;
+  height: 500px;
+  padding: 20px;
+  color: aliceblue;
+}
+.child1_c {
+  display: flex;
+  flex-direction: row;
+  margin-top: 7px;
 }

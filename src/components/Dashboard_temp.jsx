@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const Dashboard_temp = () => {
   return (
     <>
-      <div className="second_dash my-3">
+      <div className="second_dash my-10">
         <div className="first_2 bg-[#222831] text-white rounded-xl mx-2 px-5 ">
           <div>
             <h3 className="font-extrabold">Solar Panel Generation</h3>

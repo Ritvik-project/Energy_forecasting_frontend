@@ -43,7 +43,7 @@ const Dashboard3 = () => {
 
               <div className="flex px-5 my-2">
                 <WiSolarEclipse className="" />
-                <h2>{w_data.temperature[index]}°C</h2>
+                <h2 className="">{w_data.temperature[index]}°C</h2>
               </div>
 
               <div>
