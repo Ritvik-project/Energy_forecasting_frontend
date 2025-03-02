@@ -1,11 +1,16 @@
-# Project Title
+# AI-Powered Smart Forecasting for Renewable Energy Generation
+This project aims to develop an AI-powered renewable energy forecasting system that predicts solar and wind energy generation based on historical weather data. By utilizing machine learning models, such as XGBoost regression, the system forecasts energy production with high accuracy. The system integrates real-time weather data from APIs, such as Open Meteo, and provides hourly predictions for up to 14 days. A user-friendly web dashboard displays these forecasts through interactive charts, enabling energy companies, grid operators, and businesses to optimize energy planning, reduce power shortages, and enhance sustainability. The system is designed to be adaptable to different geographical locations, offering tailored predictions based on local weather conditions.
 
-A brief description of what this project does and what problem it solves.
 
 ## Problem Statement
 Renewable energy sources like solar and wind are highly unpredictable due to their dependence on weather conditions. This unpredictability can cause fluctuations in energy generation, making it challenging to balance power supply and demand. Effective forecasting is crucial for energy grid stability and reducing reliance on fossil fuel-based backup power. 
 
 This project aims to develop an AI-powered forecasting system that uses historical weather data to predict solar and wind energy generation, providing real-time insights for stakeholders in the energy sector.
+
+## Solution
+The AI-powered forecasting system will:
+- Leverage machine learning models to predict solar and wind energy output based on past weather patterns.
+- Provide real-time forecasts and actionable insights to help stakeholders optimize operations and reduce reliance on non-renewable    energy sources.
 
 
 ## Background:
@@ -38,11 +43,16 @@ As renewable energy adoption grows, improving energy forecasting becomes crucial
 
 
 ## Technologies Used
-- Python 3.x
-- Flask
-- JavaScript
-- React
-- PostgreSQL
+- **Machine Learning algorthim:** xgboost regression
+- **Backend:** Flask, Pickle
+- **Frontend:** React.js, Tailwind.css, CSS
+- **APIs:** openmeteo
+- **Deployment:** Vercel (for web deployment)
 
-## Installation Instructions
+## Live Demo
+you can view the live version of the project here:
+
+https://energy-forecasting-frontend-bfl3-oofdc7zgf.vercel.app/
+
+
 
